@@ -1,0 +1,1 @@
+print(f"Valor Faturamento ({mes}): {valor_faturamento}")
