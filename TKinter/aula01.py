@@ -1,4 +1,4 @@
-from tkinter import Tk
+from tkinter import Tk  #somente a classe TK
 
 janela = Tk()
 
