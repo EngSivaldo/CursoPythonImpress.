@@ -1,9 +1,15 @@
 import tkinter as tk
 from tkinter import ttk #combobox
 from tkcalendar import DateEntry 
+import requests
+
+
+requisicao = requests.get('https://economia.awesomeapi.com.br/json/all')
+dicionario_moedas = requisicao.json()
+
 
 #lista moedas para o combobox
-lista_moedas = ['USD', 'EUR']
+lista_moedas = list(dicionario_moedas.keys())
 
 #para o botao pegar_cotacao
 def pegar_cotacao():
@@ -30,8 +36,8 @@ label_cotacao_moeda.grid(row=0, column=0,padx=10, pady=10, sticky='nswe', column
 label_selecionar_moeda = tk.Label(text='Selecionar Moeda!', anchor='e')
 label_selecionar_moeda.grid(row=1, column=0,padx=10, pady=10, sticky='nswe', columnspan=2);
 
-#lista suspensa(combobox) que recebe lista_moedas, do label selecionar moeda
-combobox_selecionar_moedas = ttk.Combobox(values=[lista_moedas])
+# Lista suspensa (combobox) que recebe lista_moedas, do label selecionar moeda
+combobox_selecionar_moedas = ttk.Combobox(values=lista_moedas)
 combobox_selecionar_moedas.grid(row=1, column=2, padx=10, pady=10, sticky='nswe')
 
 #Labels selecionar dia da cotacao =============================
